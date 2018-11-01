@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import com.example.administrator.albumdemo.loadingimg.LoadingImgActivity;
 import com.example.administrator.albumdemo.reptile.ReptileActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             startActivity(new Intent(this, ReptileActivity.class));
         } else if (id == R.id.nav_send) {
-
+            startActivity(new Intent(this, LoadingImgActivity.class));
         }
 
         drawer.closeDrawer(GravityCompat.START);

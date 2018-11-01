@@ -6,7 +6,11 @@ import com.example.administrator.albumdemo.application.AlbumApplication;
 import com.example.administrator.albumdemo.base.BaseNet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -47,10 +51,31 @@ public class ReptileRepository implements ReptileContract.Repository {
                 .pureRequest()
                 .flatMap(new Function<String, ObservableSource<List<String>>>() {
                     @Override
-                    public ObservableSource<List<String>> apply(String s) {
+                    public ObservableSource<List<String>> apply(String htmlStr) {
 
                         final List<String> strings = new ArrayList<>();
-                        strings.add(s);
+                        String img = "";
+                        Pattern p_image;
+                        Matcher m_image;
+                        String regEx_img = "<img.*src\\s*=\\s*(.*?)[^>]*?>";
+                        p_image = Pattern.compile
+                                (regEx_img, Pattern.CASE_INSENSITIVE);
+                        m_image = p_image.matcher(htmlStr);
+
+                        if(m_image.find()){
+                            img = m_image.group();
+                            // 匹配<img>中的src数据
+                            Matcher m = Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)").matcher(img);
+                            while (m.find()) {
+                                String url = m.group(1);
+                                if(m.group(1).contains("http")) {
+                                    strings.add(m.group(1));
+                                }else {
+                                    strings.add("http:" + m.group(1));
+
+                                }
+                            }
+                        }
 
                         return Observable.create(new ObservableOnSubscribe<List<String>>() {
                             @Override

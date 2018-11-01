@@ -25,11 +25,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".DetailActivity"
-            android:theme="@style/FullScreen"></activity>
+            android:theme="@style/FullScreen">
+
+        </activity>
+
         <activity android:name=".reptile.ReptileActivity">
 
         </activity>
+
+        <activity android:name=".loadingimg.LoadingImgActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
