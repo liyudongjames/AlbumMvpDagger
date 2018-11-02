@@ -59,7 +59,7 @@ public class LoadingImgActivity extends BaseMvpActivity<LoadingImgPresenter> imp
         baseQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                final LoadingImageView livImage = (LoadingImageView) view;
+                final LoadingImageView livImage = (LoadingImageView) view.findViewById(R.id.iv_album);
                 livImage.setWaveSpeed(45)
                         .setOffset(20)
                         .startAnimatior();

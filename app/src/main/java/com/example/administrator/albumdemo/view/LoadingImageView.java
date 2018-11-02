@@ -97,7 +97,7 @@ public class LoadingImageView extends AppCompatImageView {
                 break;
             case LOADING:
                 if(isRun) {
-                    paint.setColor(getResources().getColor(android.R.color.background_dark));
+                    paint.setColor(getResources().getColor(android.R.color.darker_gray));
                     paint.setStyle(Paint.Style.FILL);
                     paint.setAlpha(100);
 
@@ -114,6 +114,8 @@ public class LoadingImageView extends AppCompatImageView {
                 }
                 break;
             case ERROR:
+
+
                 break;
             case SUCCESSED:
                 canvas.drawRect(0,0, width, height, paint);
@@ -128,7 +130,7 @@ public class LoadingImageView extends AppCompatImageView {
 
                 Paint pathPaint = new Paint();
                 pathPaint.setStyle(Paint.Style.STROKE);
-                pathPaint.setColor(getResources().getColor(android.R.color.holo_green_light));
+                pathPaint.setColor(getResources().getColor(android.R.color.holo_green_dark));
                 pathPaint.setStrokeWidth(10);
                 pathPaint.setStrokeCap(Paint.Cap.ROUND);
                 pathPaint.setStrokeJoin(Paint.Join.ROUND);
@@ -197,7 +199,7 @@ public class LoadingImageView extends AppCompatImageView {
     }
 
     private void successedAnim(){
-        successedAnim = ValueAnimator.ofInt(Color.rgb(89, 186, 231), android.R.color.black);
+        successedAnim = ValueAnimator.ofInt(Color.rgb(89, 186, 231), android.R.color.darker_gray);
         successedAnim.setDuration(300);
         successedAnim.setEvaluator(new ArgbEvaluator());
         successedAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
